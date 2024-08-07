@@ -1,1 +1,39 @@
-﻿
+﻿@model Articulos
+
+<h1>Detalles de la Card</h1>
+
+<div>
+    <h4>Card</h4>
+    <hr />
+    <dl class="row">
+        <dt>
+            Imagen
+        </dt>
+        <dd>
+            @Model.Imagen
+        </dd>
+        <dt>
+            Nombre
+        </dt>
+        <dd>
+            @Model.Nombre
+        </dd>
+        <dt>
+            Precio
+        </dt>
+        <dd>
+            @Model.Precio
+        </dd>
+        <dt>
+            Detalles
+        </dt>
+        <dd>
+            @Model.Detalles
+        </dd>
+     
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar al menu</a>
+</div>
