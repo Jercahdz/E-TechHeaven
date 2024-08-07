@@ -1,24 +1,47 @@
 using e_tech_heaven.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace e_tech_heaven.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AppDbContext _context;
+
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, AppDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        //Get: Articulos
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.ETechHeavenDB.ToListAsync());
         }
 
-        public IActionResult Privacy()
+        //Get: Articulos/Detalle/{id}
+        public async Task<IActionResult> Detalles(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var articulos = await _context.ETechHeavenDB.FirstOrDefaultAsync(m => m.ArticuloId == id);
+
+            if (articulos == null)
+            {
+                return NotFound();
+            }
+
+            return View(articulos);
+        }
+
+       public IActionResult Privacy()
         {
             return View();
         }
