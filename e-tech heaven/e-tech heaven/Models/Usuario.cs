@@ -17,9 +17,9 @@ namespace e_tech_heaven.Models
         [Required]
         [StringLength(255)]
         public string Contrasena { get; set; }
-              
+
         [Required]
-        [StringLength (10)]
+        [StringLength(10)]
         public string Estado { get; set; }
 
         [Required]
@@ -34,6 +34,6 @@ namespace e_tech_heaven.Models
         [StringLength(50)]
 
         public string Role { get; set; }
-
+    
     }
 }
