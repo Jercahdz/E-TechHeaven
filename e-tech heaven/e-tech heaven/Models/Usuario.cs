@@ -30,5 +30,10 @@ namespace e_tech_heaven.Models
         [StringLength(50)]
         public int Telefono { get; set; }
 
+        [Required]
+        [StringLength(50)]
+
+        public string Role { get; set; }
+
     }
 }

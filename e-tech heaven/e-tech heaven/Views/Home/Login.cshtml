@@ -1,1 +1,26 @@
-﻿
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2> Welcome to UserApp</h2>
+
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <text>Hola Bienvenido, @User.Identity.Name!</text>
+        <a href="@Url.Action("Logout", "Account")">Logout</a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a href="@Url.Action("RestrictedAction", "Home")">Go to Restricted Action</a>
+        }
+    }
+    else
+    {
+        <a href="@Url.Action("Login","Account")">Login</a>
+        <a href="@Url.Action("Register","Account")">Register</a>
+    }
+
+
+</p>
