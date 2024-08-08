@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration.GetConnectionString("Server=PC-JERSON;Database=master;Trusted_Connection=True;TrustServerCertificate=True;");
+var connectionString = builder.Configuration.GetConnectionString("Server=localhost\\SQLEXPRESS01;Database=master;Trusted_Connection=True;TrustServerCertificate=True;");
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(connectionString));
 

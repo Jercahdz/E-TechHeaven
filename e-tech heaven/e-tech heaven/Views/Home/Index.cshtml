@@ -1,127 +1,30 @@
-﻿@model List<Articulo>
+﻿@model List<e_tech_heaven.Models.Articulos>
 
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-TECH HAVEN</title>
-    <link rel="stylesheet" href="~/css/Style.css">
-</head>
-
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo">
-            </div>
-            <ul class="menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="novedadez.html">Novedades</a></li>
-                <li><a href="mostrar_productos.php">Productos</a></li>
-                <li><a href="carrito.php">Carrito</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Admin
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="productos.php">Productos</a></li>
-                        <li><a class="dropdown-item" href="categorias.php">Categorias</a></li>
-                    </ul>
-                </li>
-                <li><a href="nosostros.html">Nosostros</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="slide">
-        <div class="slide-content">
-            <h1>E-TECH HAVEN</h1>
-        </div>
-    </section>
-    <section class="about">
-        <h2>Quienes somos</h2>
-        <br>
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <p>
-                        Somos un apasionado grupo de estudiantes de Ingeniería en Sistemas de Computación de la
-                        Universidad Fidelitas, comprometidos con la excelencia en el mundo de la tecnología y la
-                        informática. Nuestra misión es explorar, aprender y aplicar los conocimientos más actualizados
-                        en el campo de la informática y la creación de ambientes web innovadores.
-                    </p>
-                    <p>
-                        Nuestra participación en la clase de Ambiente Web es una oportunidad emocionante para aplicar los
-                        conocimientos teóricos en proyectos prácticos. A través de esta asignatura, hemos adquirido
-                        habilidades esenciales en el desarrollo de sitios web atractivos, interactivos y funcionales.
-                        Estamos emocionados por la posibilidad de crear experiencias en línea que no solo cumplan con
-                        los estándares actuales, sino que también influyan positivamente en la forma en que las personas
-                        interactúan con la web.
-                    </p>
-                </div>
-                <div class="col-6">
-                    <img src="images/gif.gif" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="telefono">
-            <br>
-            <br>
-            <h1>Lo último en</h1>
-            <h1>Celulares</h1>
-        </div>
-    </section>
-    <section class="boxt">
-        <div class="containert">
-            <div class="card">
-                <div class="imgBx">
-                    <img src="images/samsung.png" alt="">
-                </div>
-                <div class="content">
-                    <p>
-                        Estos dispositivos son conocidos por su diseño elegante,
-                        innovadoras características tecnológicas y pantallas de alta resolución.
-                    </p>
-                    <p>
-                        Samsung ofrece una amplia gama de modelos, desde teléfonos insignia de gama alta hasta opciones
-                        más asequibles.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="imgBx">
-                    <img src="images/huawei.png" alt="">
-                </div>
-                <div class="content">
-                    <p>
-                        Estos teléfonos son conocidos por su innovación tecnológica y una amplia variedad de
-                        características.
-                        Se destacan por su énfasis en la fotografía, con cámaras de alta capacidades avanzadas de
-                        procesamiento de imágenes.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="imgBx">
-                    <img src="images/apple.png" alt="">
-                </div>
-                <div class="content">
-                    <p>
-                        Los iPhones son conocidos por su diseño elegante y su sistema operativo exclusivo, iOS.
-                        Estos dispositivos son ampliamente reconocidos por su calidad de construcción, hardware de alto
-                        rendimiento y una amplia gama de características que hacen que sean muy populares en todo el
-                        mundo.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</body>
-</html>
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Detalles</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var articulo in Model)
+        {
+            <tr>
+                <td>@articulo.ArticuloId</td>
+                <td>@articulo.Nombre</td>
+                <td>@articulo.Precio</td>
+                <td>@articulo.Detalles</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = articulo.ArticuloId })">Editar</a> |
+                    <a href="@Url.Action("Details", new { id = articulo.ArticuloId })">Detalles</a> |
+                    <a href="@Url.Action("Delete", new { id = articulo.ArticuloId })">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create")">Crear Nuevo Artículo</a>

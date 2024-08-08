@@ -24,7 +24,7 @@ namespace e_tech_heaven.Controllers
         }
 
         //Get: Articulos/Detalle/{id}
-        public async Task<IActionResult> Detalles(int id)
+        public async Task<IActionResult> Articulo(int id)
         {
             if (id == null)
             {
