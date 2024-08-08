@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using e_tech_heaven.Models;
+using e_tech_heaven.Controllers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("Server=PC-JERSON;Database=master;Trusted_Connection=True;TrustServerCertificate=True;");
+builder.Services.AddDbContext<AppDbContext>(options =>
+options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 

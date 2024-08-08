@@ -1,0 +1,16 @@
+USE ETechHeavenDB;
+GO
+
+IF OBJECT_ID('dbo.Usuarios', 'U') IS NOT NULL
+	DROP TABLE dbo.Users;
+	
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    NombreUsuario NVARCHAR(250) NOT NULL,
+	Correo NVARCHAR(100) NOT NULL,
+    Contrasena NVARCHAR(255) NOT NULL,
+	Estado NVARCHAR(10) NOT NULL,
+	Cedula INT NOT NULL,
+    Role NVARCHAR(50) NOT NULL
+);
+GO

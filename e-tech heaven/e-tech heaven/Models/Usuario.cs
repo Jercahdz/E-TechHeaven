@@ -33,7 +33,7 @@ namespace e_tech_heaven.Models
         [Required]
         [StringLength(50)]
 
-        public string Role { get; set; }
+        public string Rol { get; set; }
     
     }
 }
